@@ -1,3 +1,4 @@
+import java.sql.SQLOutput;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -47,7 +48,7 @@ public class MethodsExercises {
 //        int userInput = getInteger(1, 10);
 //        System.out.print(userInput);
 //    }
-    public static int getFactorial(long num) {
+    public static long getFactorial(long num) {
         int accumulator = 1;
         for (long i = 1; i <= num; i++) {
             accumulator *= i;
@@ -59,29 +60,73 @@ public class MethodsExercises {
         Scanner sc = new Scanner(System.in);
         System.out.println("Do you want to continue? (Y/n)");
         String response = sc.next();
-        if (response.toUpperCase() == "Y") {
+        if (response.toUpperCase().equals("Y")) {
+//            System.out.println("true");
             return true;
         } else {
+//            System.out.println("false");
             return false;
         }
     }
 
-    public static boolean inRange(int userInput) {
-//        if (userInput > 10 || userInput < 1) {
-//            return false;
-//        } else {
-//            return true;
-//        }
-        return (userInput > 10 || userInput < 1);
+    public static boolean inRange(long userInput) {
+        return (userInput <= 10 && userInput >=  1);
     }
 
     public static void main(String[] args) {
-        do {
-            userConfirm();
-            System.out.println("passed that ho");
-        } while (true);
 
+//        PROBLEM 3 COMPLETE
+//        boolean confirm;
+//        do {
+//            Scanner sc = new Scanner(System.in);
+//            System.out.println("Enter a number from 1 to 10: ");
+//            long userLong = sc.nextLong();
+//            if (inRange(userLong)) {
+//                System.out.println("The factorial of your number is: " + getFactorial(userLong));
+//                confirm = userConfirm();
+//            } else {
+//                System.out.println("Your number is out of range. Please try again.");
+//                confirm = true;
+//            }
+//
+//        } while (confirm);
+//PROBLEM 4 COMPLETED
+//        boolean confirm;
+//        do {
+//            Scanner sc = new Scanner(System.in);
+//            System.out.println("How many sides do your two dice have?");
+//            int diceSides = sc.nextInt();
+//            rolldice(diceSides);
+//            confirm = userConfirm();
+//        } while (confirm);
     }
 
+    public static void rolldice(int sides) {
+        int diceA = (getRandomNumber(1, sides));
+        int diceB = (getRandomNumber(1, sides));
+        System.out.println("Your roll result is: " + diceA + ' ' + diceB);
+    }
+
+    public static int getRandomNumber(int min, int max) {
+        return (int) ((Math.random() * (max - min)) + min);
+    }
+
+
+
+
+
+    public static int getInteger(int min, int max) {
+        Scanner sc = new Scanner(System.in);
+        int input;
+        do {
+            System.out.println("Enter a number between " + min + " and " + max + ".");
+            input = sc.nextInt();
+            if (input < min || input > max) {
+                System.out.println("Input invalid");
+            }
+        } while (input < min || input > max);
+        System.out.println("Input acceptable");
+        return input;
+    }
 }
 

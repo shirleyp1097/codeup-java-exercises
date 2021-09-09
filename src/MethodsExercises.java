@@ -55,45 +55,33 @@ public class MethodsExercises {
         return accumulator;
     }
 
+    public static boolean userConfirm() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Do you want to continue? (Y/n)");
+        String response = sc.next();
+        if (response.toUpperCase() == "Y") {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
-        // TODO: break the following code apart into a few methods
-//        public static void main(String[] args) {
-//            Scanner sc = new Scanner(System.in);
-//            System.out.println("Please enter an input.");
-//            String stringInput = sc.nextLine();
-//            System.out.println("Please enter an integer.");
-//            int intInput = sc.nextInt(); // assume the user will enter a valid integer
-//            if (stringInput.length() == intInput) {
-//                System.out.println("That matches the length of the input!");
-//            } else {
-//                System.out.println("That doesn't match the length of the input!");
-//            }
+    public static boolean inRange(int userInput) {
+//        if (userInput > 10 || userInput < 1) {
+//            return false;
+//        } else {
+//            return true;
 //        }
+        return (userInput > 10 || userInput < 1);
+    }
 
-        public static String getUserInput() {
-            Scanner sc = new Scanner(System.in);
-            System.out.println("please enter an input.");
-            return sc.nextLine();
-        }
+    public static void main(String[] args) {
+        do {
+            userConfirm();
+            System.out.println("passed that ho");
+        } while (true);
 
-        public static int getUserInt() {
-            Scanner sc = new Scanner(System.in);
-            System.out.println("please enter an input.");
-            return sc.nextInt();
-            }
-
-
-
-        public static void main(String[] args) {
-            String stringInput = getUserInput();
-            int intInput = getUserInt();
-            if (stringInput.length() == intInput) {
-                System.out.println("That matches the length of the input!");
-            } else {
-                System.out.println("That doesn't match the length of the input!");
-            }
-
-        }
+    }
 
 }
 

@@ -1,12 +1,16 @@
 public class Person {
-    private static String name = "Default";
+    public String name = "Default";
+
+    public Person() {
+        this.name = "Default";
+    }
 
     public Person(String nameInput) {
-        name = nameInput;
+        this.name = nameInput;
     }
 
     public String getName(){
-        return Person.name;
+        return name;
     }
 
     public void setName(String name){

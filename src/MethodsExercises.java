@@ -128,5 +128,11 @@ public class MethodsExercises {
         System.out.println("Input acceptable");
         return input;
     }
+
+    public static long factorial(int num) {
+        if (num == 1) {return 1;}
+        return factorial(num -1) * num;
+
+    }
 }
 

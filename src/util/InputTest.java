@@ -9,7 +9,7 @@ public class InputTest {
         Input.getInt(1, 10);
         Input.yesNo();
         Input.getInt();
-        Input.getDouble(100, 1000);
-        Input.getDouble();
+//        Input.getDouble(100, 1000);
+//        Input.getDouble();
     }
 }

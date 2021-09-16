@@ -7,14 +7,12 @@ public class Input {
 
     public static String getString() {
         String userString = sc.next();
-        System.out.println(userString);
         return userString;
     }
 
     public static boolean yesNo() {
-        System.out.println("Print yes or no");
         String userInput = sc.next();
-        if (userInput.equals('y') || userInput.equalsIgnoreCase("yes")) {
+        if (userInput.equalsIgnoreCase("y") || userInput.equalsIgnoreCase("yes")) {
             return true;
         } else {
             return false;

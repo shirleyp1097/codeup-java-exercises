@@ -31,8 +31,27 @@ public class Input {
             return userInt;
         }
 
+//        public static int getInt() {
+//            return sc.nextInt();
+//        }
+
         public static int getInt() {
-            return sc.nextInt();
+//            String userInput = getString();
+//            int userInt = 0;
+//            try {
+//                int userInt = Integer.valueOf(userInput);
+//            } catch (Exception e) {
+//                System.out.println("You didn't enter an integer");
+//                e.printStackTrace();
+//            }
+//            return userInt;
+            String userInput = getString();
+            try {
+                Integer.valueOf(userInput);
+            } catch (Exception e) {
+                System.out.println("You didn't enter an integer");
+            }
+            return Integer.valueOf(userInput);
         }
 
     }

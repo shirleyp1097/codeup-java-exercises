@@ -20,8 +20,12 @@ public class Student {
         grades.add(grade);
     }
 
+    public ArrayList<Integer> getGrades() {
+        return this.grades;
+    }
+
     public double getGradeAverage() {
-        int sum = 0;
+        double sum = 0;
         for (int value: grades) {
             sum += value;
         }

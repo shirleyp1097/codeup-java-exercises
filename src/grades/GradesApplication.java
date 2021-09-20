@@ -5,7 +5,8 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class GradesApplication {
-    public static void main(String[] args) {
+
+    public static void runGradesApp() {
         HashMap<String, Student> students = new HashMap<>();
         Student sara = new Student("Sara");
         sara.addGrade(5);
@@ -13,9 +14,9 @@ public class GradesApplication {
         sara.addGrade(5);
 
         Student mark = new Student("Mark");
-        sara.addGrade(5);
-        sara.addGrade(3);
-        sara.addGrade(5);
+        mark.addGrade(5);
+        mark.addGrade(3);
+        mark.addGrade(6);
 
         students.put("sara_is_cool", sara);
         students.put("markTheshark", mark);
@@ -51,7 +52,8 @@ public class GradesApplication {
                 System.out.println("Goodbye, and have a wonderful day!");
             }
         } while (goOn == true);
-
-
+    }
+    public static void main(String[] args) {
+        runGradesApp();
     }
 }

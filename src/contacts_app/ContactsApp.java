@@ -5,10 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Scanner;
+import java.util.*;
 
 import static java.nio.file.Files.exists;
 
@@ -26,22 +23,34 @@ public class ContactsApp{
         file = new File(filepath + "/contacts.txt");
     }
 
-    public void initializeContacts() throws FileNotFoundException {
+    public static void initializeContacts() throws FileNotFoundException {
         Scanner sc = new Scanner(file);
         while (sc.hasNextLine()) {
             contacts.add(new Contact(sc.next() + " " + sc.next(), sc.nextLong()));
         }
     }
 
-    public static void printContacts() throws FileNotFoundException {
-//        Scanner sc = new Scanner(file);
-//        while (sc.hasNextLine()) {
-//            System.out.println(sc.nextLine());
-//        }
+    public static void createContactsFile() throws IOException {
+        FileWriter fw = new FileWriter(file);
+        PrintWriter pw = new PrintWriter(fw);
+        int counter = 0;
+        for (Contact contact: contacts) {
+            if (counter != contacts.size() - 1) {
+                pw.println(contact.getName() + " " + contact.getNumber());
+            } else {
+                pw.print(contact.getName() + " " + contact.getNumber());
+            }
+            counter++;
+        }
+        pw.close();
+    }
 
-        Scanner sc = new Scanner(file);
-        while (sc.hasNextLine()) {
-            contacts.add(new Contact(sc.next() + " " + sc.next(), sc.nextLong()));
+    public static void printContacts() throws FileNotFoundException {
+
+        System.out.println("Name | Phone number");
+        System.out.println("--------------");
+        for (Contact contact: contacts) {
+            System.out.printf("%s | %d\n", contact.getName(), contact.getNumber());
         }
     }
 
@@ -73,24 +82,55 @@ public class ContactsApp{
         }
     }
 
-//    public static void deleteContact() {
-//        Scanner sc = new Scanner(System.in);
-//        System.out.println("Enter the name of the contact you want to delete: ");
-//        String search = sc.nextLine();
-//
-//    }
+    public static void deleteContact() throws IOException {
+        Scanner sc = new Scanner(System.in);
+        ArrayList<Contact> newContacts = new ArrayList<>();
+        System.out.println("Enter the name of the contact you want to delete: ");
+        String search = sc.nextLine();
+        for (Contact contact : contacts) {
+            if (!contact.getName().toUpperCase().contains(search.toUpperCase())) {
+                newContacts.add(contact);
+            }
+        }
+        contacts = newContacts;
+        createContactsFile();
+    }
+
+    public static void runContactsApp() throws IOException {
+        initializeFile();
+        initializeContacts();
+        boolean goOn = true;
+        System.out.println("Welcome to the Contacts App");
+        do {
+            System.out.println("Would you like to: ");
+            System.out.println("1. View contacts");
+            System.out.println("2. Add a new contact");
+            System.out.println("3. Search a contact by name");
+            System.out.println("4. Delete an existing contact");
+            System.out.println("5. Exit");
+            System.out.println("Enter an option(1, 2, 3, 4, or 5): ");
+            Scanner sc = new Scanner(System.in);
+            int userChoice = sc.nextInt();
+            switch (userChoice) {
+                case 1: printContacts();
+                    break;
+                case 2: addContact();
+                    break;
+                case 3: searchContact();
+                    break;
+                case 4: deleteContact();
+                    break;
+                case 5: goOn = false;
+                    break;
+            }
+        } while (goOn);
+    }
 
 
 
 
 
     public static void main(String[] args) throws IOException {
-        initializeFile();
-        printContacts();
-        addContact();
-//        for (Contact contact: contacts) {
-//            System.out.println(contact.getName());
-//            System.out.println(contact.getNumber());
-//        }
+        runContactsApp();
     }
 }

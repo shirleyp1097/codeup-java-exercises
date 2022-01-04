@@ -48,12 +48,34 @@ public class JavaDrills {
         return output;
     }
 
+
+//    public static ArrayList<Integer> solution(int number) {
+//        ArrayList<Integer> myArr = new ArrayList<>();
+//        for (int i = 0; i < number; i++) {
+//            if ((i % 3 == 0) || (i % 5 == 0))  {
+//                myArr.add(i);
+//            }
+//        }
+//        return myArr;
+//    }
+
+    public static int solution(int number) {
+        int sum = 0;
+        for (int i = 0; i < number; i++) {
+            if ((i % 3 == 0) || (i % 5 == 0))  {
+                sum += i;
+            }
+        }
+        return sum;
+    }
+
     public static void main(String[] args) {
-        System.out.println(flipInnerCase("cat")); // cAt
-        System.out.println(flipInnerCase("CaT")); // CAT
-        System.out.println(flipInnerCase("caT")); // cAT
-        System.out.println(flipInnerCase("codeup")); // cODEUp
-        System.out.println(flipInnerCase("CoDeup")); // COdEUp
+//        System.out.println(flipInnerCase("cat")); // cAt
+//        System.out.println(flipInnerCase("CaT")); // CAT
+//        System.out.println(flipInnerCase("caT")); // cAT
+//        System.out.println(flipInnerCase("codeup")); // cODEUp
+//        System.out.println(flipInnerCase("CoDeup")); // COdEUp
+        System.out.println(solution(10));
     }
 }
 

@@ -84,8 +84,38 @@ public class JavaDrills {
         return secondSet.size();
     }
 
+    public static int vowels(String text) {
+        int counter = 0;
+        String[] vowels = {"a","e","i","o","u"};
+        for (int i = 0; i < text.length(); i++) {
+            for (String j: vowels) {
+                if (String.valueOf(text.charAt(i)).equals(j)) {
+                    counter +=1;
+                }
+            }
+        }
+        return counter;
+    }
+
+    public static String accum(String s) {
+        StringBuilder myString = new StringBuilder();
+        for (int i = 0; i < s.length(); i++) {
+            myString.append(String.valueOf(s.charAt(i)).toUpperCase());
+            if (i > 0) {
+                for (int j = 0; j < i; j++) {
+                    myString.append(String.valueOf(s.charAt(i)).toLowerCase());
+                }
+            }
+            if (i != s.length() - 1) {
+                myString.append('-');
+            }
+        }
+        return myString.toString();
+    }
+
     public static void main(String[] args) {
-        System.out.println(repeatLetters("aabbcddeeeee"));
+//        System.out.println("a" * 3);
+        System.out.println(accum("ayo"));
     }
 }
 

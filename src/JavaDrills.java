@@ -69,13 +69,23 @@ public class JavaDrills {
         return sum;
     }
 
+    public static int repeatLetters(String text) {
+        int counter = 0;
+        text = text.toLowerCase();
+        Set<String> set = new HashSet<String>();
+        Set<String> secondSet = new HashSet<String>();
+        for (int i=0; i< text.length(); i++) {
+            if (set.contains(String.valueOf(text.charAt(i)))) {
+                secondSet.add(String.valueOf(text.charAt(i)));
+            } else {
+                set.add(String.valueOf(text.charAt(i)));
+            }
+        }
+        return secondSet.size();
+    }
+
     public static void main(String[] args) {
-//        System.out.println(flipInnerCase("cat")); // cAt
-//        System.out.println(flipInnerCase("CaT")); // CAT
-//        System.out.println(flipInnerCase("caT")); // cAT
-//        System.out.println(flipInnerCase("codeup")); // cODEUp
-//        System.out.println(flipInnerCase("CoDeup")); // COdEUp
-        System.out.println(solution(10));
+        System.out.println(repeatLetters("aabbcddeeeee"));
     }
 }
 

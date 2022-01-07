@@ -113,14 +113,53 @@ public class JavaDrills {
         return myString.toString();
     }
 
+    public static String validParentheses(String parens) {
+        for (char c : parens.toCharArray()) {
+            if (String.valueOf(c).equals("(")) {
+                for (int i = parens.indexOf(c) + 1; i < parens.length(); i++) {
+                    System.out.println(parens.charAt(i));
+                    if (String.valueOf(parens.charAt(i)).equals(")")) {
+                        parens = parens.replaceFirst("[)]", "");
+                        parens = parens.replaceFirst("[(]", "");
+                        break;
+                    }
+                }
+            }
+        }
+        return parens;
+//        if ((parens.contains("(")) || (parens.contains(")"))) {
+//            return false;
+//        } else {
+//            return true;
+//        }
+    }
+
+    public static String toJadenCase(String phrase) {
+        if (phrase == null || phrase.equals("")) {
+            return null;
+        }
+        String[] arr = phrase.split(" ");
+        StringBuilder newPhrase = new StringBuilder();
+        for (int j = 0; j < arr.length; j++) {
+            for (int i = 0; i < arr[j].length(); i++) {
+                StringBuilder newWord = new StringBuilder();
+                if (i == 0) {
+                    newWord.append(String.valueOf(arr[j].charAt(i)).toUpperCase(Locale.ROOT));
+                } else {
+                    newWord.append(String.valueOf(arr[j].charAt(i)));
+                }
+                if (i == arr[j].length() - 1 && j != arr.length - 1) {
+                    newWord.append(" ");
+                }
+                newPhrase.append(newWord);
+            }
+        }
+        return newPhrase.toString();
+    }
+
     public static void main(String[] args) {
-//        System.out.println("a" * 3);
-        System.out.println(accum("ayo"));
+        System.out.println(toJadenCase("ayo what up"));
     }
 }
 
-//In `codeup-java-exercises`, in `JavaDrills`:
-//        Create a static method, returnTotalDifference, that takes in two lists of integers and returns the difference between the sum of all integers in the first list minus the sum of all integers in the second list.
-//        returnTotalDifference(Arrays.asList(10, 2, 3), Arrays.asList(1, 2, 3)); // returns 9
-//        returnTotalDifference(Arrays.asList(10, 1), Arrays.asList(1, 7)); // returns 3
-//        returnTotalDifference(Arrays.asList(10, 1), Arrays.asList(1, 7, 1)); // returns 2
+
